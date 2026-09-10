@@ -1,42 +1,35 @@
 public class Main {
 
     public static void main(String[] args){
-        // Buat data Member
-        Member mbr01 = new Member("MB001", "Andi");
-        Member mbr02 = new Member("MB002", "Budi");
-        Member mbr03 = new Member("MB003", "Citra");
-
-        // Buat data Genre
         genreBuku genre01 = new genreBuku("G001", "Fiksi");
         genreBuku genre02 = new genreBuku("G002", "Sains");
-        genreBuku genre03 = new genreBuku("G003", "Sejarah");
 
-        // Buat data Buku dan atur genre-nya
         Buku bk01 = new Buku("BK001", "Laskar Pelangi");
-        bk01.setGenre(genre01);
+        Buku bk02 = new Buku("BK002", "Fisika Dasar");
 
-        Buku bk02 = new Buku("BK002", "Sejarah Nusantara");
-        bk02.setGenre(genre03);
+        AdminPerpus admin01 = new AdminPerpus("Sari", "Jl. Perpus No.1", "sari@perpus.com", "AD001", "Kepala Perpustakaan");
+        admin01.tampikanIdentitas();
+        System.out.println();
 
-        Buku bk03 = new Buku("BK003", "Fisika Dasar");
-        bk03.setGenre(genre02);
+        // Admin menambahkan buku ke katalog sekaligus assign genre
+        admin01.tambahBukuBaru(bk01, genre01);
+        admin01.tambahBukuBaru(bk02, genre02);
+        admin01.tampilkanBukuDikelola();
+        System.out.println();
 
-        // Relasi peminjaman buku oleh member (many-to-many)
-        mbr01.tambahBuku(bk01);
-        mbr01.tambahBuku(bk02);
-        mbr01.tambahBuku(bk03);
+        Mahasiswa mhs01 = new Mahasiswa("Andi", "Jl. Merdeka No.1", "andi@mail.com",
+                                         "MB001", "2024-01-10",
+                                         "J04001", "Teknologi Rekayasa Perangkat Lunak", 5);
+        mhs01.tampikanIdentitas();
+        System.out.println();
 
-        mbr01.tampilkanBuku();
+        mhs01.tambahBuku(bk01);
+        mhs01.tambahBuku(bk02);
+        mhs01.tampilkanBuku();
         System.out.println();
 
         bk01.tampilkanPeminjam();
         System.out.println();
 
-        bk01.tambahPeminjam(mbr02);
-        bk01.tampilkanPeminjam();
-        System.out.println();
-
-        // Tampilkan buku berdasarkan genre
-        genre01.tampilkanBuku();
     }
 }
