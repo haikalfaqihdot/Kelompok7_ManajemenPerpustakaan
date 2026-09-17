@@ -1,4 +1,4 @@
-public class Person {
+public abstract class Person {
     private String nama;
     private String alamat;
     private String email;
@@ -45,9 +45,12 @@ public class Person {
         }
     }
 
+    public abstract String getRole();
+
     public void tampikanIdentitas() {
         System.out.println("Nama: " + nama);
         System.out.println("Alamat: " + alamat);
         System.out.println("Email: " + email);
+        System.out.println("Role: " + getRole());
     }
 }

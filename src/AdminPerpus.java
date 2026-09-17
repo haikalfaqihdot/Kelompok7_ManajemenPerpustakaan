@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminPerpus extends Person {
+public class AdminPerpus extends Person implements PengelolaBuku {
     private String idAdmin;
     private String jabatan;
     private List<Buku> daftarBukuDikelola;
@@ -13,12 +13,14 @@ public class AdminPerpus extends Person {
         this.daftarBukuDikelola = new ArrayList<>();
     }
 
+    @Override
     public void tambahBukuBaru(Buku bk, genreBuku genre){
         bk.setGenre(genre);
         daftarBukuDikelola.add(bk);
         System.out.println(getNama() + " menambahkan buku baru: " + bk.getJudul());
     }
 
+    @Override
     public void hapusBukuDariKatalog(Buku bk){
         if(daftarBukuDikelola.remove(bk)){
             System.out.println(getNama() + " menghapus buku: " + bk.getJudul());
@@ -38,9 +40,13 @@ public class AdminPerpus extends Person {
     }
 
     @Override
+    public String getRole(){
+        return "Admin Perpustakaan";
+    }
+
+    @Override
     public void tampikanIdentitas() {
         super.tampikanIdentitas();
-        System.out.println("Role: Admin Perpustakaan");
         System.out.println("ID Admin: " + idAdmin);
         System.out.println("Jabatan: " + jabatan);
     }

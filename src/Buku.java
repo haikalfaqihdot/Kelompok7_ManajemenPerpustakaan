@@ -21,26 +21,18 @@ public class Buku {
     public void tambahPeminjam(Member mbr){
         if(!daftarPeminjam.contains(mbr)){
             daftarPeminjam.add(mbr);
-            mbr.tambahBuku(this);
+            mbr.pinjamBuku(this);
         }
     }
 
-    public String getKode(){
-        return kode;
-    }
-
-    public String getJudul(){
-        return judul;
-    }
-
-    public genreBuku getGenre(){
-        return genre;
-    }
+    public String getKode(){ return kode; }
+    public String getJudul(){ return judul; }
+    public genreBuku getGenre(){ return genre; }
 
     public void tampilkanPeminjam(){
-        System.out.println("Daftar Peminjam Buku "+judul+":");
+        System.out.println("Daftar Peminjam Buku " + judul + ":");
         for(Member mbr: daftarPeminjam){
-            System.out.println("- "+mbr.getNama()+" ("+mbr.getIdMember()+")");
+            System.out.println("- " + mbr.getNama() + " (" + mbr.getIdMember() + ")");
         }
     }
 }
